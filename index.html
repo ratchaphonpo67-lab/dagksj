@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CLASSROOM IoT | Dashboard</title>
+<style>
+:root{--bg:#0b1220;--panel:#111c2f;--panel2:#16243a;--line:#26364f;--text:#edf4ff;--muted:#91a4bf;--cyan:#38c6d9;--blue:#6598ff;--green:#32d49a;--amber:#ffbf69}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 80% -10%,#1c3557 0%,transparent 60%),var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,"Segoe UI",sans-serif}
+.wrap{max-width:1240px;margin:auto;padding:30px 24px 48px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}.brand{display:flex;gap:14px;align-items:center}.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,#38c6d9,#527cff);display:grid;place-items:center;font-size:23px;box-shadow:0 8px 28px #38c6d933}.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:2px;font-weight:800}.brand h1{font-size:23px;margin:2px 0 0;letter-spacing:.2px}.status{display:flex;align-items:center;gap:9px;border:1px solid #245642;background:#103629;color:#8af0c5;padding:9px 13px;border-radius:99px;font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+.sub{color:var(--muted);margin:-16px 0 25px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:linear-gradient(145deg,#15243a,#101a2b);border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:0 14px 35px #0002}.metric-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}.ico{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:18px;background:#1e3b55}.value{font-size:34px;font-weight:750;letter-spacing:-1px;margin:15px 0 2px}.unit{font-size:15px;color:var(--muted);font-weight:500}.hint{font-size:11px;color:var(--muted)}.accent{color:var(--cyan)}.green{color:var(--green)}.amber{color:var(--amber)}
+.section{display:flex;justify-content:space-between;align-items:end;margin:27px 0 13px}.section h2{font-size:17px;margin:0}.section p{font-size:12px;color:var(--muted);margin:3px 0 0}.charts{display:grid;grid-template-columns:1.5fr 1fr;gap:15px}.chart-card{min-height:290px}.chart-title{display:flex;justify-content:space-between;align-items:center}.chart-title h3{font-size:14px;margin:0}.legend{display:flex;gap:14px;color:var(--muted);font-size:11px}.key{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}.chart{width:100%;height:210px;margin-top:18px;overflow:visible}.gridline{stroke:#2a3a52;stroke-dasharray:4 6}.axis{fill:#8296b2;font-size:10px}.line1{fill:none;stroke:var(--cyan);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.line2{fill:none;stroke:var(--blue);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.area{fill:url(#fade);opacity:.22}.barwrap{display:flex;align-items:end;justify-content:space-around;height:190px;padding:12px 4px 0;border-bottom:1px solid var(--line);gap:9px}.barcol{height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:8px;flex:1}.bar{width:min(28px,75%);border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#38c6d9,#2875a8)}.bar.h{background:linear-gradient(180deg,#6598ff,#3f58a8)}.barlabel{font-size:10px;color:var(--muted)}
+.table-card{padding:0;overflow:hidden}.table-head{padding:18px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.table-head h3{font-size:14px;margin:0}.pill{font-size:10px;color:#a9bdd7;background:#1b2b43;padding:5px 9px;border-radius:99px}table{width:100%;border-collapse:collapse;text-align:left}th,td{padding:13px 20px;border-bottom:1px solid #24334a;font-size:12px}th{color:var(--muted);font-weight:600;background:#111b2b}td{color:#dce8f7}tr:last-child td{border:0}.tag{padding:4px 8px;border-radius:7px;background:#123d34;color:#8af0c5;font-size:10px}.foot{display:flex;justify-content:space-between;gap:12px;color:#7286a2;font-size:11px;margin-top:18px}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.charts{grid-template-columns:1fr}.top{align-items:flex-start}.status{white-space:nowrap}}
+@media(max-width:520px){.wrap{padding:20px 14px}.brand h1{font-size:18px}.logo{width:42px;height:42px}.grid{gap:10px}.card{padding:14px}.value{font-size:28px}.metric-head{font-size:11px}.foot{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+ <div class="brand"><div class="logo">⌁</div><div><div class="eyebrow">SMART CLASSROOM • IOT MONITORING</div><h1>CLASSROOM IoT DASHBOARD</h1></div></div>
+ <div class="status"><span class="dot"></span> ระบบพร้อมใช้งาน <span style="opacity:.65">• DEMO</span></div>
+</header>
+<p class="sub">ภาพรวมสภาพแวดล้อมภายในห้องเรียน · แสดงข้อมูลอุณหภูมิและความชื้นจาก ESP32 + DHT11</p>
+
+<div class="grid">
+ <div class="card"><div class="metric-head">อุณหภูมิล่าสุด <span class="ico">🌡️</span></div><div class="value">27.5<span class="unit"> °C</span></div><div class="hint"><span class="accent">●</span> ค่าตัวอย่างสำหรับออกแบบหน้าจอ</div></div>
+ <div class="card"><div class="metric-head">ความชื้นล่าสุด <span class="ico">💧</span></div><div class="value">55<span class="unit"> %</span></div><div class="hint"><span class="accent">●</span> ค่าตัวอย่างสำหรับออกแบบหน้าจอ</div></div>
+ <div class="card"><div class="metric-head">การบันทึกข้อมูล <span class="ico">🗂️</span></div><div class="value">ทุก 5<span class="unit"> นาที</span></div><div class="hint">รอบการส่งข้อมูลที่ตั้งไว้ใน ESP32</div></div>
+ <div class="card"><div class="metric-head">ข้อมูลในตัวอย่าง <span class="ico">📈</span></div><div class="value">8<span class="unit"> รายการ</span></div><div class="hint">ข้อมูลจำลองเพื่อแสดงรูปแบบ Dashboard</div></div>
+</div>
+
+<div class="section"><div><h2>แนวโน้มสภาพแวดล้อม</h2><p>ตัวอย่างการเปลี่ยนแปลงตามเวลา</p></div><span class="pill">วันนี้ · DEMO DATA</span></div>
+<div class="charts">
+ <div class="card chart-card"><div class="chart-title"><h3>อุณหภูมิและความชื้น</h3><div class="legend"><span><i class="key" style="background:var(--cyan)"></i>อุณหภูมิ °C</span><span><i class="key" style="background:var(--blue)"></i>ความชื้น %</span></div></div>
+ <svg class="chart" viewBox="0 0 620 220" preserveAspectRatio="none" role="img" aria-label="กราฟตัวอย่างอุณหภูมิและความชื้น"><defs><linearGradient id="fade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#38c6d9"/><stop offset="1" stop-color="#38c6d9" stop-opacity="0"/></linearGradient></defs>
+ <g><path class="gridline" d="M42 25H605 M42 65H605 M42 105H605 M42 145H605 M42 185H605"/><text class="axis" x="5" y="29">35</text><text class="axis" x="5" y="69">30</text><text class="axis" x="5" y="109">25</text><text class="axis" x="5" y="149">20</text><text class="axis" x="5" y="189">15</text>
+ <path class="area" d="M45 105 L125 95 L205 112 L285 85 L365 90 L445 73 L525 82 L600 65 L600 185 L45 185Z"/>
+ <path class="line1" d="M45 105 L125 95 L205 112 L285 85 L365 90 L445 73 L525 82 L600 65"/>
+ <path class="line2" d="M45 145 L125 130 L205 137 L285 120 L365 126 L445 111 L525 117 L600 102"/>
+ <g class="axis"><text x="40" y="207">08:00</text><text x="120" y="207">09:00</text><text x="200" y="207">10:00</text><text x="280" y="207">11:00</text><text x="360" y="207">12:00</text><text x="440" y="207">13:00</text><text x="520" y="207">14:00</text><text x="580" y="207">15:00</text></g></g></svg>
+ </div>
+ <div class="card chart-card"><div class="chart-title"><h3>สรุปค่าที่ตรวจวัด</h3><span class="pill">8 จุดข้อมูล</span></div>
+ <div class="barwrap"><div class="barcol"><div class="bar" style="height:48%"></div><span class="barlabel">08:00</span></div><div class="barcol"><div class="bar h" style="height:61%"></div><span class="barlabel">09:00</span></div><div class="barcol"><div class="bar" style="height:55%"></div><span class="barlabel">10:00</span></div><div class="barcol"><div class="bar h" style="height:72%"></div><span class="barlabel">11:00</span></div><div class="barcol"><div class="bar" style="height:65%"></div><span class="barlabel">12:00</span></div><div class="barcol"><div class="bar h" style="height:80%"></div><span class="barlabel">13:00</span></div><div class="barcol"><div class="bar" style="height:69%"></div><span class="barlabel">14:00</span></div><div class="barcol"><div class="bar h" style="height:74%"></div><span class="barlabel">15:00</span></div></div>
+ <div class="legend" style="justify-content:center;margin-top:15px"><span><i class="key" style="background:var(--cyan)"></i>อุณหภูมิ</span><span><i class="key" style="background:var(--blue)"></i>ความชื้น</span></div>
+ </div>
+</div>
+<div class="section"><div><h2>ประวัติการตรวจวัดล่าสุด</h2><p>รายการตัวอย่าง — จะเปลี่ยนเป็นข้อมูลจริงเมื่อเชื่อม Google Sheets</p></div><span class="pill">อัปเดตอัตโนมัติภายหลัง</span></div>
+<div class="card table-card"><div class="table-head"><h3>Sensor readings</h3><span class="pill">DHT11 · ESP32</span></div><table><thead><tr><th>วัน / เวลา</th><th>อุณหภูมิ</th><th>ความชื้น</th><th>สถานะ</th></tr></thead><tbody>
+<tr><td>13/11/2026 15:00</td><td>27.5 °C</td><td>55 %</td><td><span class="tag">ปกติ</span></td></tr>
+<tr><td>13/11/2026 14:55</td><td>27.3 °C</td><td>56 %</td><td><span class="tag">ปกติ</span></td></tr>
+<tr><td>13/11/2026 14:50</td><td>27.4 °C</td><td>57 %</td><td><span class="tag">ปกติ</span></td></tr>
+<tr><td>13/11/2026 14:45</td><td>27.2 °C</td><td>56 %</td><td><span class="tag">ปกติ</span></td></tr>
+<tr><td>13/11/2026 14:40</td><td>27.1 °C</td><td>58 %</td><td><span class="tag">ปกติ</span></td></tr>
+</tbody></table></div>
+<div class="foot"><span>CLASSROOM IoT SYSTEM · ESP32 DEVKIT V1 + DHT11</span><span>หมายเหตุ: หน้านี้เป็นต้นแบบ ยังไม่ได้เชื่อมต่อ Google Sheets</span></div>
+</div>
+</body></html>
